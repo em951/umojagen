@@ -61,8 +61,67 @@ const HomePage = () => {
           </Link>
         </motion.div>
       </div>
+    
+      {/* Section "Qui sommes-nous" */}
+      <motion.section
+        className="py-16 bg-[#C0D6DF] text-[#166088]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Qui sommes-nous ?</h2>
+          <p className="text-lg mb-6">
+            Nous sommes une équipe passionnée par la création de sites web modernes et intuitifs. Notre objectif est de rendre la création de sites accessible à tous, même sans compétences techniques.
+          </p>
+        </div>
+      </motion.section>
 
+      {/* Section "Nos services" */}
+      <motion.section
+        className="py-16 bg-[#4F6D7A] text-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Nos services</h2>
+          <p className="text-lg mb-6">
+            Nous offrons des outils puissants pour créer des sites web facilement et rapidement, tout en personnalisant chaque détail pour un résultat unique.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Section "Contact" */}
+      <motion.section
+        className="py-16 bg-[#4A6FA5] text-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Contactez-nous</h2>
+          <p className="text-lg mb-6">
+            Si vous avez des questions, n'hésitez pas à nous contacter. Nous serions heureux de vous aider à créer votre site web.
+          </p>
+          <Link to="/contact">
+            <motion.button
+              className="px-8 py-4 bg-[#C0D6DF] text-[#166088] rounded-lg shadow-lg hover:bg-[#DBE9EE] transition-all transform hover:scale-105" // Bleu clair et bleu foncé
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contactez-nous
+            </motion.button>
+          </Link>
+        </div>
+      </motion.section>
+
+      {/* Footer */}
+      <footer className="bg-[#166088] text-white text-center p-4 mt-auto">
+        <p>© 2024 UmojaGen - Tous droits réservés</p>
+      </footer>
     </div>
+
   );
 };
 
