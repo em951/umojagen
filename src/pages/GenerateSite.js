@@ -3,60 +3,88 @@ import { Link } from 'react-router-dom';
 
 const GenerateSite = () => {
   const [siteName, setSiteName] = useState('');
-  const [pageCount, setPageCount] = useState(1);
-  const [pageNames, setPageNames] = useState(['']);
+  const [selectedTemplate, setSelectedTemplate] = useState('');
+  const [customPages, setCustomPages] = useState([]);
+  const [defaultPages, setDefaultPages] = useState([]);
+
+  const templates = {
+    showcase: ['Accueil', 'À propos', 'Contact'],
+    blog: ['Accueil', 'Articles', 'Contact'],
+    ecommerce: ['Accueil', 'Produits', 'Panier', 'Contact'],
+  };
 
   // Mise à jour du nom du site
   const handleSiteName = (e) => {
     setSiteName(e.target.value);
   };
 
-  // Mise à jour du nombre de pages
-  const handlePageCount = (e) => {
-    const count = parseInt(e.target.value) || 1;
-    setPageCount(count);
-    const newPageNames = Array(count).fill('').map((_, index) => pageNames[index] || '');
-    setPageNames(newPageNames);
+  // Sélectionner un modèle
+  const handleTemplateSelection = (template) => {
+    setSelectedTemplate(template);
+    setDefaultPages(templates[template]);
+    setCustomPages([]);
   };
 
-  // Mise à jour des noms des pages
-  const handlePageName = (index, value) => {
-    const newPageNames = [...pageNames];
-    newPageNames[index] = value;
-    setPageNames(newPageNames);
+  // Ajouter une page personnalisée
+  const addCustomPage = () => {
+    setCustomPages([...customPages, '']);
+  };
+
+  // Supprimer une page personnalisée
+  const removeCustomPage = (index) => {
+    const updatedPages = customPages.filter((_, i) => i !== index);
+    setCustomPages(updatedPages);
+  };
+
+  // Mise à jour des noms des pages personnalisées
+  const handleCustomPageName = (index, value) => {
+    const updatedPages = [...customPages];
+    updatedPages[index] = value;
+    setCustomPages(updatedPages);
   };
 
   // Générer les données du site
   const handleGenerateSite = () => {
     const siteData = {
       name: siteName,
-      pages: pageNames,
+      template: selectedTemplate,
+      pages: [...defaultPages, ...customPages],
     };
 
     console.log('Site à générer', siteData);
-    alert(`Le site "${siteData.name}" a été généré avec ${siteData.pages.length} page(s) : ${siteData.pages.join(', ')}`);
+    alert(
+      `Le site "${siteData.name}" a été généré avec les pages : ${siteData.pages.join(
+        ', '
+      )}`
+    );
   };
 
   return (
-    <div className="h-screen flex flex-col">
-      {/* Barre de navigation */}
-      <nav className="flex justify-between items-center bg-blue-600 text-white p-4">
+    <div className="font-sans">
+      {/* Barre de navigation fixe */}
+      <nav className="flex justify-between items-center bg-[#C0D6DF] text-[#166088] p-4 fixed w-full top-0 z-10 shadow-lg">
         <h1 className="text-xl font-bold">UmojaGen</h1>
         <ul className="flex space-x-4">
           <li>
-            <Link to="/" className="hover:underline">Accueil</Link>
+            <Link to="/" className="hover:underline transition-all">
+              Accueil
+            </Link>
           </li>
           <li>
-            <Link to="/generate" className="hover:underline">Générer un site</Link>
+            <Link to="/generate" className="hover:underline transition-all">
+              Générer un site
+            </Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:underline">Contact</Link>
+            <Link to="/contact" className="hover:underline transition-all">
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>
 
       {/* Contenu principal */}
-      <div className="flex-grow container mx-auto p-4">
+      <div className="flex-grow container mx-auto p-4 mt-16">
         <h1 className="text-3xl font-bold text-center mb-6">Générer un site web</h1>
 
         <div className="mb-4">
@@ -71,35 +99,69 @@ const GenerateSite = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-lg font-medium">Nombre de pages :</label>
-          <input
-            type="number"
-            value={pageCount}
-            onChange={handlePageCount}
-            min="1"
-            className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-          />
+          <h3 className="text-lg font-medium">Choisissez un modèle :</h3>
+          <div className="flex space-x-4 mt-2">
+            {Object.keys(templates).map((template) => (
+              <button
+                key={template}
+                onClick={() => handleTemplateSelection(template)}
+                className={`px-4 py-2 rounded-lg shadow-lg ${
+                  selectedTemplate === template
+                    ? 'bg-[#166088] text-white'
+                    : 'bg-[#DBE9EE] text-[#166088]'
+                } hover:bg-[#C0D6DF] transition-all`}
+              >
+                {template === 'showcase' && 'Site Vitrine'}
+                {template === 'blog' && 'Blog'}
+                {template === 'ecommerce' && 'E-commerce'}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mb-4">
-          <h3 className="text-xl font-medium mb-2">Nom des pages :</h3>
-          {pageNames.map((pageName, index) => (
-            <div key={index} className="mb-2">
-              <label>Page {index + 1} :</label>
-              <input
-                type="text"
-                value={pageName}
-                onChange={(e) => handlePageName(index, e.target.value)}
-                placeholder={`Nom de la page ${index + 1}`}
-                className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-              />
+        {selectedTemplate && (
+          <div>
+            <h3 className="text-lg font-medium">Pages par défaut :</h3>
+            <ul className="list-disc ml-6 mt-2">
+              {defaultPages.map((page, index) => (
+                <li key={index} className="text-gray-700">
+                  {page}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-4">
+              <h3 className="text-lg font-medium">Ajouter des pages personnalisées :</h3>
+              {customPages.map((page, index) => (
+                <div key={index} className="flex items-center mt-2">
+                  <input
+                    type="text"
+                    value={page}
+                    onChange={(e) => handleCustomPageName(index, e.target.value)}
+                    placeholder={`Nom de la page ${index + 1}`}
+                    className="w-full p-2 border border-gray-300 rounded-lg"
+                  />
+                  <button
+                    onClick={() => removeCustomPage(index)}
+                    className="ml-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  >
+                    Supprimer
+                  </button>
+                </div>
+              ))}
+              <button
+                onClick={addCustomPage}
+                className="mt-2 px-4 py-2 bg-[#DBE9EE] text-[#166088] rounded-lg shadow-lg hover:bg-[#C0D6DF] transition-all"
+              >
+                Ajouter une page
+              </button>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
         <button
           onClick={handleGenerateSite}
-          className="w-full py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+          className="mt-6 w-full py-3 px-8 bg-[#DBE9EE] text-[#166088] rounded-lg shadow-lg hover:bg-[#C0D6DF] transition-all transform hover:scale-105"
         >
           Générer le site web
         </button>
