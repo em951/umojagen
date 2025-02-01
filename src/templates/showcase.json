@@ -1,0 +1,44 @@
+{
+  "name": "Site Vitrine",
+  "sections": [
+    {
+      "type": "header",
+      "title": "Site Vitrine",
+      "navItems": ["Home", "About", "Contact"]
+    },
+    {
+      "type": "hero",
+      "title": "Bienvenue sur notre site vitrine",
+      "subtitle": "Discover our amazing products and services",
+      "ctaText": "Learn More",
+      "ctaLink": "#"
+    },
+    {
+      "type": "features",
+      "items": [
+        {
+          "title": "Feature 1",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+          "title": "Feature 2",
+          "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": "Feature 3",
+          "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        }
+      ]
+    },
+    {
+      "type": "footer",
+      "content": "2024 Showcase Site. All rights reserved."
+    }
+  ],
+  "styles": {
+    "font": "Arial, sans-serif",
+    "primaryColor": "#000",
+    "secondaryColor": "#FFF",
+    "colorScheme": "light"
+  }
+}

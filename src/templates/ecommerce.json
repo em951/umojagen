@@ -1,0 +1,56 @@
+{
+    "name": "E-commerce",
+    "sections": [
+      {
+        "type": "header",
+        "title": "E-commerce Store",
+        "navItems": ["Home", "Shop", "Contact"],
+        "searchPlaceholder": "Search products...",
+        "icons": ["search", "cart"]
+      },
+      {
+        "type": "hero",
+        "title": "Summer Sale",
+        "subtitle": "Up to 50% off on selected items",
+        "ctaText": "Shop Now",
+        "ctaLink": "#"
+      },
+      {
+        "type": "products",
+        "title": "Featured Products",
+        "items": [
+          {
+            "title": "Product 1",
+            "price": "$99.99",
+            "image": "product1.jpg"
+          },
+          {
+            "title": "Product 2",
+            "price": "$79.99",
+            "image": "product2.jpg"
+          },
+          {
+            "title": "Product 3",
+            "price": "$49.99",
+            "image": "product3.jpg"
+          },
+          {
+            "title": "Product 4",
+            "price": "$19.99",
+            "image": "product4.jpg"
+          }
+        ]
+      },
+      {
+        "type": "footer",
+        "content": "&copy; 2024 E-commerce Store. All rights reserved."
+      }
+    ],
+    "styles": {
+      "font": "Roboto, sans-serif",
+      "primaryColor": "#FF6347",
+      "secondaryColor": "#FFF",
+      "colorScheme": "light"
+    }
+  }
+  

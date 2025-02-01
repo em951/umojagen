@@ -1,0 +1,52 @@
+{
+    "name": "Blog",
+    "sections": [
+      {
+        "type": "header",
+        "title": "Tech Insights",
+        "navItems": ["Home", "About", "Contact"]
+      },
+      {
+        "type": "hero",
+        "title": "Welcome to Tech Insights",
+        "subtitle": "Your daily dose of tech news and tutorials",
+        "ctaText": "Read More",
+        "ctaLink": "#"
+      },
+      {
+        "type": "posts",
+        "title": "Latest Posts",
+        "items": [
+          {
+            "title": "Understanding React 18",
+            "excerpt": "Discover the latest features in React 18 and how to use them.",
+            "image": "post1.jpg",
+            "link": "#"
+          },
+          {
+            "title": "CSS Grid vs Flexbox",
+            "excerpt": "A detailed comparison of CSS Grid and Flexbox for layout design.",
+            "image": "post2.jpg",
+            "link": "#"
+          },
+          {
+            "title": "10 VS Code Extensions",
+            "excerpt": "Boost your productivity with these must-have VS Code extensions.",
+            "image": "post3.jpg",
+            "link": "#"
+          }
+        ]
+      },
+      {
+        "type": "footer",
+        "content": "&copy; 2024 Tech Insights. All rights reserved."
+      }
+    ],
+    "styles": {
+      "font": "Times New Roman, serif",
+      "primaryColor": "#1E90FF",
+      "secondaryColor": "#F8F8F8",
+      "colorScheme": "light"
+    }
+  }
+  

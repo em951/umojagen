@@ -1,0 +1,51 @@
+{
+    "name": "Portfolio",
+    "sections": [
+      {
+        "type": "header",
+        "title": "John Doe",
+        "navItems": ["About", "Projects", "Contact"]
+      },
+      {
+        "type": "hero",
+        "title": "Web Developer & Designer",
+        "subtitle": "Crafting beautiful and functional websites",
+        "ctaIcons": ["github", "linkedin", "mail"]
+      },
+      {
+        "type": "projects",
+        "title": "Featured Projects",
+        "items": [
+          {
+            "title": "Project 1",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "image": "project1.jpg",
+            "link": "#"
+          },
+          {
+            "title": "Project 2",
+            "description": "Sed do eiusmod tempor incididunt ut labore.",
+            "image": "project2.jpg",
+            "link": "#"
+          },
+          {
+            "title": "Project 3",
+            "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "image": "project3.jpg",
+            "link": "#"
+          }
+        ]
+      },
+      {
+        "type": "footer",
+        "content": "&copy; 2024 John Doe. All rights reserved."
+      }
+    ],
+    "styles": {
+      "font": "Georgia, serif",
+      "primaryColor": "#333",
+      "secondaryColor": "#DDD",
+      "colorScheme": "dark"
+    }
+  }
+  
